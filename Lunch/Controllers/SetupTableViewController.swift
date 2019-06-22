@@ -10,7 +10,7 @@ import UIKit
 
 class SetupTableViewController: UITableViewController {
     
-    let settings = ["People"]
+    let settings = ["People", "Places"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,10 @@ class SetupTableViewController: UITableViewController {
         if selectedSetting == "People" {
             performSegue(withIdentifier: "goToPeople", sender: self)
         }
+        if selectedSetting == "Places" {
+            performSegue(withIdentifier: "goToPlaces", sender: self)
+        }
+        
         
     }
     /*
