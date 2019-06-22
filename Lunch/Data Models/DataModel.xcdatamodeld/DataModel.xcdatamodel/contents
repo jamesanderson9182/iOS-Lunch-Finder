@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A371a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Person" representedClassName=".Person" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="placePreferences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PersonPlace" inverseName="person" inverseEntity="PersonPlace" syncable="YES"/>
+    </entity>
+    <entity name="PersonPlace" representedClassName=".PersonPlace" syncable="YES" codeGenerationType="class">
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="placePreferences" inverseEntity="Person" syncable="YES"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="personPreferences" inverseEntity="Place" syncable="YES"/>
+    </entity>
+    <entity name="Place" representedClassName=".Place" syncable="YES" codeGenerationType="class">
+        <attribute name="isTreat" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="personPreferences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PersonPlace" inverseName="place" inverseEntity="PersonPlace" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Person" positionX="-311.39453125" positionY="40.75" width="128" height="73"/>
+        <element name="PersonPlace" positionX="-117.0234375" positionY="55.51953125" width="128" height="73"/>
+        <element name="Place" positionX="61.76171875" positionY="40.40625" width="128" height="88"/>
+    </elements>
+</model>
