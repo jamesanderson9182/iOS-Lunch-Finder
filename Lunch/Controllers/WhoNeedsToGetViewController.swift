@@ -17,10 +17,8 @@ class WhoNeedsToGetViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         loadData()
+        // TODO: How do I reload the people when I reverse a segue??
     }
 
 
@@ -41,6 +39,6 @@ class WhoNeedsToGetViewController: UITableViewController {
         } catch {
             print("Error loading people data: \(error)")
         }
+        tableView.reloadData()
     }
 }
-
