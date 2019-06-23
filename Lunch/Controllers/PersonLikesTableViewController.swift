@@ -11,7 +11,7 @@ import CoreData
 
 class PersonLikesTableViewController: UITableViewController {
 
-    var placesLikedByPerson = [String]()
+    var personPlaces = [PersonPlace]()
     var allPlaces = [Place]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -32,14 +32,18 @@ class PersonLikesTableViewController: UITableViewController {
         return allPlaces.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonLikesCell", for: indexPath)
-
-        cell.textLabel?.text = allPlaces[indexPath.row].name
-        cell.accessoryType = placesLikedByPerson.contains(allPlaces[indexPath.row].name!) ? .checkmark : .none
-        cell.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         
+        cell.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        cell.textLabel?.text = allPlaces[indexPath.row].name
+        var personLikesThePlaceAtTheCurrentCell = false
+        personPlaces.forEach { (personPlace) in
+            if personPlace.place?.name == self.allPlaces[indexPath.row].name {
+                personLikesThePlaceAtTheCurrentCell = true
+            }
+        }
+        cell.accessoryType = personLikesThePlaceAtTheCurrentCell ? .checkmark : .none
         return cell
     }
     
@@ -49,14 +53,17 @@ class PersonLikesTableViewController: UITableViewController {
         
         if selectedCell.accessoryType == .checkmark {
             selectedCell.accessoryType = .none
-            placesLikedByPerson.remove(at: placesLikedByPerson.firstIndex(of: selectedPlace.name!)!)
-            
+            personPlaces.forEach { (personPlace) in
+                if personPlace.place == selectedPlace {
+                    context.delete(personPlace)
+                }
+            }
         } else {
             selectedCell.accessoryType = .checkmark
             let newPlaceLikedByPerson = PersonPlace(context: context)
             newPlaceLikedByPerson.person = person
             newPlaceLikedByPerson.place = selectedPlace
-            placesLikedByPerson.append(selectedPlace.name!)
+            personPlaces.append(newPlaceLikedByPerson)
         }
         do {
             try context.save()
@@ -65,19 +72,7 @@ class PersonLikesTableViewController: UITableViewController {
         }
         
         loadData()
-        // if unchecked check & add row to joining table
-        // Redraw table
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     func loadData() {
         let allPlacesRequest : NSFetchRequest<Place> = Place.fetchRequest()
         do {
@@ -89,15 +84,12 @@ class PersonLikesTableViewController: UITableViewController {
         
         let personPlacesRequest : NSFetchRequest<PersonPlace> = PersonPlace.fetchRequest()
         personPlacesRequest.predicate = NSPredicate(format: "person.name MATCHES %@", person!.name!)
-        var personPlaces = [PersonPlace]()
+        personPlaces = [PersonPlace]()
         do {
             try personPlaces = context.fetch(personPlacesRequest)
         } catch {
             print("Error retrieving placesLikedByPerson \(error)")
         }
-        
-        personPlaces.forEach { (personPlace) in
-            placesLikedByPerson.append(personPlace.place!.name!)
-        }
+        tableView.reloadData()
     }
 }
