@@ -78,4 +78,16 @@ class PeopleTableViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToPersonLikesPlaces", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination as! PersonLikesTableViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationViewController.person = people[indexPath.row]
+        }
+    }
 }

@@ -137,7 +137,6 @@
         <!--People-->
         <scene sceneID="0Fm-Qb-WrH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4gx-uJ-nxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Gon-Ux-Cx9" customClass="PeopleTableViewController" customModule="Lunch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4ri-bv-J1f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -159,9 +158,41 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="People" id="DkW-Iz-sd3"/>
+                    <connections>
+                        <segue destination="txo-fp-ndn" kind="show" identifier="goToPersonLikesPlaces" id="4xQ-oi-5fh"/>
+                    </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4gx-uJ-nxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3096" y="-670"/>
+        </scene>
+        <!--Person Likes:-->
+        <scene sceneID="ary-s7-NpX">
+            <objects>
+                <tableViewController title="Person Likes:" id="txo-fp-ndn" customClass="PersonLikesTableViewController" customModule="Lunch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="d2A-xW-aig">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonLikesCell" id="Lsg-QU-QZg">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lsg-QU-QZg" id="c9e-qi-rWo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="txo-fp-ndn" id="EBF-NR-d1M"/>
+                            <outlet property="delegate" destination="txo-fp-ndn" id="Vsb-91-K7K"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qCE-gm-SeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4052" y="-671"/>
         </scene>
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

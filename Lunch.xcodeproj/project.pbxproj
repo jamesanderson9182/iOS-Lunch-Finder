@@ -17,6 +17,7 @@
 		1AF9975222BEB33C00E4EF4A /* SetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9975122BEB33C00E4EF4A /* SetupTableViewController.swift */; };
 		1AF9975422BEB4FD00E4EF4A /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9975322BEB4FD00E4EF4A /* PeopleTableViewController.swift */; };
 		1AF9975622BECF1200E4EF4A /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9975522BECF1200E4EF4A /* PlacesTableViewController.swift */; };
+		1AF9975822BED8F000E4EF4A /* PersonLikesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF9975722BED8F000E4EF4A /* PersonLikesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1AF9975122BEB33C00E4EF4A /* SetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTableViewController.swift; sourceTree = "<group>"; };
 		1AF9975322BEB4FD00E4EF4A /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
 		1AF9975522BECF1200E4EF4A /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		1AF9975722BED8F000E4EF4A /* PersonLikesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonLikesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				1AF9975122BEB33C00E4EF4A /* SetupTableViewController.swift */,
 				1AF9975522BECF1200E4EF4A /* PlacesTableViewController.swift */,
 				1AF9975322BEB4FD00E4EF4A /* PeopleTableViewController.swift */,
+				1AF9975722BED8F000E4EF4A /* PersonLikesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				1AF9973922BE9F6000E4EF4A /* WhoNeedsToGetViewController.swift in Sources */,
 				1AF9975222BEB33C00E4EF4A /* SetupTableViewController.swift in Sources */,
 				1AF9975422BEB4FD00E4EF4A /* PeopleTableViewController.swift in Sources */,
+				1AF9975822BED8F000E4EF4A /* PersonLikesTableViewController.swift in Sources */,
 				1AF9975622BECF1200E4EF4A /* PlacesTableViewController.swift in Sources */,
 				1AF9973722BE9F6000E4EF4A /* AppDelegate.swift in Sources */,
 			);
