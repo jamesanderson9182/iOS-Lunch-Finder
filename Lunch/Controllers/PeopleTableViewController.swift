@@ -62,6 +62,7 @@ class PeopleTableViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Person", style: .default) { (action) in
             let person = Person(context: self.context)
             person.name = textView.text
+            self.people.append(person)
             do {
                 try self.context.save()
             } catch {
@@ -72,6 +73,8 @@ class PeopleTableViewController: UITableViewController {
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Their name. E.g. Jonny Appleseed"
+            alertTextField.autocapitalizationType = .words
+            
             textView = alertTextField
         }
         alert.addAction(action)
