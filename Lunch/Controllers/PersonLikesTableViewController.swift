@@ -10,11 +10,11 @@ import UIKit
 import CoreData
 
 class PersonLikesTableViewController: UITableViewController {
-
+    
     var personPlaces = [PersonPlace]()
     var allPlaces = [Place]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     var person : Person? {
         didSet {
             navigationItem.title = "Tap Where \(person!.name!) Likes"
@@ -25,13 +25,11 @@ class PersonLikesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allPlaces.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonLikesCell", for: indexPath)
         
@@ -80,7 +78,6 @@ class PersonLikesTableViewController: UITableViewController {
         } catch {
             print("Error retrieving allPlaces \(error)")
         }
-        
         
         let personPlacesRequest : NSFetchRequest<PersonPlace> = PersonPlace.fetchRequest()
         personPlacesRequest.predicate = NSPredicate(format: "person.name MATCHES %@", person!.name!)

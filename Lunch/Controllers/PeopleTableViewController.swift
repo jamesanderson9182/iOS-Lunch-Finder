@@ -23,7 +23,6 @@ class PeopleTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return people.count
     }
     
@@ -33,25 +32,6 @@ class PeopleTableViewController: UITableViewController {
         cell.textLabel?.text = people[indexPath.row].name
         
         return cell
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    func loadData() {
-        do {
-            let request : NSFetchRequest<Person> = Person.fetchRequest()
-            try people = context.fetch(request)
-        } catch {
-            print("Error loading people data: \(error)")
-        }
-        tableView.reloadData()
     }
     
     @objc func barButtonItemClicked() {
@@ -92,5 +72,15 @@ class PeopleTableViewController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationViewController.person = people[indexPath.row]
         }
+    }
+    
+    fileprivate func loadData() {
+        do {
+            let request : NSFetchRequest<Person> = Person.fetchRequest()
+            try people = context.fetch(request)
+        } catch {
+            print("Error loading people data: \(error)")
+        }
+        tableView.reloadData()
     }
 }

@@ -22,7 +22,7 @@ class WhoNeedsToGetViewController: UITableViewController {
         // TODO: How do I reload the people when I reverse a segue??
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(findPlaceTapped))
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WhoNeedsCell", for: indexPath)
         cell.textLabel?.text = people[indexPath.row].name

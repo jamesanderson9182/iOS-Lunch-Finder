@@ -11,22 +11,21 @@ import UIKit
 class SetupTableViewController: UITableViewController {
     
     let settings = ["People", "Places"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settings.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SetupCell", for: indexPath)
-
+        
         cell.textLabel?.text = settings[indexPath.row]
-
+        
         return cell
     }
     
@@ -38,17 +37,5 @@ class SetupTableViewController: UITableViewController {
         if selectedSetting == "Places" {
             performSegue(withIdentifier: "goToPlaces", sender: self)
         }
-        
-        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

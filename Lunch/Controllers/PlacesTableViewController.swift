@@ -20,30 +20,14 @@ class PlacesTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(barButtonItemClicked))
     }
 
-    // MARK: - Table view data source
-
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath)
         cell.textLabel?.text = places[indexPath.row].name
         return cell
-    }
-
-
-    func loadData() {
-        do {
-            let request : NSFetchRequest<Place> = Place.fetchRequest()
-            places = try context.fetch(request)
-        } catch {
-            print("Error loading places: \(error)")
-        }
-        
-        tableView.reloadData()
     }
     
     @objc func barButtonItemClicked() {
@@ -68,11 +52,23 @@ class PlacesTableViewController: UITableViewController {
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "E.g. Subway, PizzaHut or McDonalds"
+            alertTextField.autocapitalizationType = .words
             textField = alertTextField
         }
         
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func loadData() {
+        do {
+            let request : NSFetchRequest<Place> = Place.fetchRequest()
+            places = try context.fetch(request)
+        } catch {
+            print("Error loading places: \(error)")
+        }
+        
+        tableView.reloadData()
     }
 }
